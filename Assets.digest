@@ -1,0 +1,783 @@
+using {/Verse.org/Assets}
+Realistic_Starter_VFX_Pack_Niagara := module:
+    Niagara := module:
+        Smoke_and_Steam := module:
+
+
+    Materials := module:
+        M_Smoke_2<scoped {ProjectHollowzLevel}>:material = external {}
+
+        M_Smoke_1<scoped {ProjectHollowzLevel}>:material = external {}
+
+    Textures := module:
+        T_Smoke_1<scoped {ProjectHollowzLevel}>:texture = external {}
+
+        T_Smoke_2<scoped {ProjectHollowzLevel}>:texture = external {}
+
+HollowzCharacters := module:
+    Box_Collider<scoped {ProjectHollowzLevel}>:mesh = external {}
+
+    M_transparent<scoped {ProjectHollowzLevel}>:material = external {}
+
+    music := module:
+
+
+    Lich := module:
+        AnimationssLich := module:
+
+
+        TextureLich := module:
+            T_Lich_1_D<scoped {ProjectHollowzLevel}>:texture = external {}
+
+            T_Lich_AORM<scoped {ProjectHollowzLevel}>:texture = external {}
+
+            T_Lich_E<scoped {ProjectHollowzLevel}>:texture = external {}
+
+            T_Lich_Full_Mask<scoped {ProjectHollowzLevel}>:texture = external {}
+
+            T_Lich_N<scoped {ProjectHollowzLevel}>:texture = external {}
+
+            T_Smoke_D<scoped {ProjectHollowzLevel}>:texture = external {}
+
+            T_Smoke_2_D<scoped {ProjectHollowzLevel}>:texture = external {}
+
+            T_Lich_Mask<scoped {ProjectHollowzLevel}>:texture = external {}
+
+        MeshssLich := module:
+            M_Lich_1<scoped {ProjectHollowzLevel}>:material = external {}
+
+            MI_Lich_1_Inst<scoped {ProjectHollowzLevel}>:material = external {}
+
+            LichStaticMesh<scoped {ProjectHollowzLevel}>:mesh = external {}
+
+    Ghoul := module:
+        meshss := module:
+            MI_Ghoul_Inst1<scoped {ProjectHollowzLevel}>:material = external {}
+
+            MI_GhoulRed_Inst<scoped {ProjectHollowzLevel}>:material = external {}
+
+            MI_Ghoul<scoped {ProjectHollowzLevel}>:material = external {}
+
+            GhoulsStaticMesh<scoped {ProjectHollowzLevel}>:mesh = external {}
+
+        Texturess := module:
+            T_Ghoul_N<scoped {ProjectHollowzLevel}>:texture = external {}
+
+            T_Ghoul_E<scoped {ProjectHollowzLevel}>:texture = external {}
+
+            T_Ghoul_D<scoped {ProjectHollowzLevel}>:texture = external {}
+
+            T_Ghoul_AORM<scoped {ProjectHollowzLevel}>:texture = external {}
+
+            T_Ghoul_Decor_D<scoped {ProjectHollowzLevel}>:texture = external {}
+
+            T_GhoulDecor_N<scoped {ProjectHollowzLevel}>:texture = external {}
+
+            T_GhoulDecor_AORM<scoped {ProjectHollowzLevel}>:texture = external {}
+
+        Animationss := module:
+
+
+    Zombie := module:
+        MeshssZombie := module:
+            M_Zombie<scoped {ProjectHollowzLevel}>:material = external {}
+
+            M_BossClothsZombie<scoped {ProjectHollowzLevel}>:material = external {}
+
+            ZombieStaticMesh<scoped {ProjectHollowzLevel}>:mesh = external {}
+
+        TextureZombie := module:
+            T_Zombie_2_D<scoped {ProjectHollowzLevel}>:texture = external {}
+
+            T_Zombie_N<scoped {ProjectHollowzLevel}>:texture = external {}
+
+            T_Zombie_D<scoped {ProjectHollowzLevel}>:texture = external {}
+
+            T_Zombie_AORM<scoped {ProjectHollowzLevel}>:texture = external {}
+
+        AnimationsZombie := module:
+
+
+    Skeleton := module:
+        MeshssSkele := module:
+            MI_Skeleton_01_Inst<scoped {ProjectHollowzLevel}>:material = external {}
+
+            M_Skeleton_01<scoped {ProjectHollowzLevel}>:material = external {}
+
+            M_Weapon<scoped {ProjectHollowzLevel}>:material = external {}
+
+            Sword_StaticMesh<scoped {ProjectHollowzLevel}>:mesh = external {}
+
+            SkeletonStaticMesh<scoped {ProjectHollowzLevel}>:mesh = external {}
+
+        TextureSkele := module:
+            T_Skeleton_N<scoped {ProjectHollowzLevel}>:texture = external {}
+
+            T_Skeleton_E<scoped {ProjectHollowzLevel}>:texture = external {}
+
+            T_Skeleton_AORM<scoped {ProjectHollowzLevel}>:texture = external {}
+
+            T_Skeleton_1_D<scoped {ProjectHollowzLevel}>:texture = external {}
+
+            T_Weapon_AORM<scoped {ProjectHollowzLevel}>:texture = external {}
+
+            T_Weapon_D<scoped {ProjectHollowzLevel}>:texture = external {}
+
+            T_Weapon_N<scoped {ProjectHollowzLevel}>:texture = external {}
+
+            T_Smoke_2_D<scoped {ProjectHollowzLevel}>:texture = external {}
+
+            T_Skeleton_2_D<scoped {ProjectHollowzLevel}>:texture = external {}
+
+            T_Equipment_N<scoped {ProjectHollowzLevel}>:texture = external {}
+
+            T_Equipment_D<scoped {ProjectHollowzLevel}>:texture = external {}
+
+            T_Equipment_AORM<scoped {ProjectHollowzLevel}>:texture = external {}
+
+        AnimationssSkele := module:
+
+
+Ultimate_VFX := module:
+    AOE_Abilities := module:
+        MagicAEO := module:
+            Niagara := module:
+                ShadowIsle := module:
+
+
+            Meshes := module:
+                SM_ConeAura<scoped {ProjectHollowzLevel}>:mesh = external {}
+
+                SM_IceSpike<scoped {ProjectHollowzLevel}>:mesh = external {}
+
+            Materials := module:
+                MI_Light_Vertical_Inst<scoped {ProjectHollowzLevel}>:material = external {}
+
+                M_Light_Vertical<scoped {ProjectHollowzLevel}>:material = external {}
+
+                MI_ImpactDecal3<scoped {ProjectHollowzLevel}>:material = external {}
+
+                MI_ImpactDecal2<scoped {ProjectHollowzLevel}>:material = external {}
+
+                M_MagicCircle<scoped {ProjectHollowzLevel}>:material = external {}
+
+                MI_Flare_7<scoped {ProjectHollowzLevel}>:material = external {}
+
+                MI_Flare_3<scoped {ProjectHollowzLevel}>:material = external {}
+
+                MI_Flare_14<scoped {ProjectHollowzLevel}>:material = external {}
+
+                MI_Caustics_21<scoped {ProjectHollowzLevel}>:material = external {}
+
+                MI_Caustics_18<scoped {ProjectHollowzLevel}>:material = external {}
+
+                MI_Caustics_17<scoped {ProjectHollowzLevel}>:material = external {}
+
+                MI_Caustics_16<scoped {ProjectHollowzLevel}>:material = external {}
+
+                MI_Caustics_14<scoped {ProjectHollowzLevel}>:material = external {}
+
+                M_Caustics<scoped {ProjectHollowzLevel}>:material = external {}
+
+                M_Flare<scoped {ProjectHollowzLevel}>:material = external {}
+
+                M_Ember<scoped {ProjectHollowzLevel}>:material = external {}
+
+                ShadowIsles := module:
+                    MI_AuraBig02<scoped {ProjectHollowzLevel}>:material = external {}
+
+                    MI_AuraBig<scoped {ProjectHollowzLevel}>:material = external {}
+
+                    M_Aura<scoped {ProjectHollowzLevel}>:material = external {}
+
+            Textures := module:
+                T_WorlyNoise_3<scoped {ProjectHollowzLevel}>:texture = external {}
+
+                T_CausticsDetailed<scoped {ProjectHollowzLevel}>:texture = external {}
+
+                T_LightVertical<scoped {ProjectHollowzLevel}>:texture = external {}
+
+                T_SpikePulse_03<scoped {ProjectHollowzLevel}>:texture = external {}
+
+                T_HolyCircle<scoped {ProjectHollowzLevel}>:texture = external {}
+
+                T_CloudsNoise_2<scoped {ProjectHollowzLevel}>:texture = external {}
+
+                T_Flare_Square<scoped {ProjectHollowzLevel}>:texture = external {}
+
+                T_BellLight<scoped {ProjectHollowzLevel}>:texture = external {}
+
+                T_FlareGeneric_02<scoped {ProjectHollowzLevel}>:texture = external {}
+
+                T_WorlyNoise_1<scoped {ProjectHollowzLevel}>:texture = external {}
+
+                T_IcePulse<scoped {ProjectHollowzLevel}>:texture = external {}
+
+                T_Pulse_00<scoped {ProjectHollowzLevel}>:texture = external {}
+
+                T_IcePulse2<scoped {ProjectHollowzLevel}>:texture = external {}
+
+                T_Perlin<scoped {ProjectHollowzLevel}>:texture = external {}
+
+                T_Mask<scoped {ProjectHollowzLevel}>:texture = external {}
+
+                T_CausticsDetailed2<scoped {ProjectHollowzLevel}>:texture = external {}
+
+                T_FlareGeneric<scoped {ProjectHollowzLevel}>:texture = external {}
+
+                Cracks := module:
+                    T_Crack02<scoped {ProjectHollowzLevel}>:texture = external {}
+
+    MagicProjectiles := module:
+        Materials := module:
+            M_Trail_4<scoped {ProjectHollowzLevel}>:material = external {}
+
+            M_Trail_1<scoped {ProjectHollowzLevel}>:material = external {}
+
+            M_Head_Master<scoped {ProjectHollowzLevel}>:material = external {}
+
+            M_Flare<scoped {ProjectHollowzLevel}>:material = external {}
+
+            M_Ember<scoped {ProjectHollowzLevel}>:material = external {}
+
+            M_Droplet<scoped {ProjectHollowzLevel}>:material = external {}
+
+            M_Caustics<scoped {ProjectHollowzLevel}>:material = external {}
+
+            MI_Head_Shadow_1<scoped {ProjectHollowzLevel}>:material = external {}
+
+            MI_Head_Shadow_0<scoped {ProjectHollowzLevel}>:material = external {}
+
+            MI_HeadProj_Frost_Inst1<scoped {ProjectHollowzLevel}>:material = external {}
+
+            MI_HeadBloom_0<scoped {ProjectHollowzLevel}>:material = external {}
+
+            MI_Flare_5<scoped {ProjectHollowzLevel}>:material = external {}
+
+            MI_Flare_3<scoped {ProjectHollowzLevel}>:material = external {}
+
+            MI_Caustics_8<scoped {ProjectHollowzLevel}>:material = external {}
+
+            MI_Caustics_5_Translucent<scoped {ProjectHollowzLevel}>:material = external {}
+
+            MI_Caustics_5<scoped {ProjectHollowzLevel}>:material = external {}
+
+            MI_Caustics_3<scoped {ProjectHollowzLevel}>:material = external {}
+
+        Meshes := module:
+            SM_Head<scoped {ProjectHollowzLevel}>:mesh = external {}
+
+        Niagara := module:
+            Shadow := module:
+
+
+        Textures := module:
+            T_WorlyNoise_1<scoped {ProjectHollowzLevel}>:texture = external {}
+
+            T_Trace_07<scoped {ProjectHollowzLevel}>:texture = external {}
+
+            T_TearDrop_TGA<scoped {ProjectHollowzLevel}>:texture = external {}
+
+            T_Perlin<scoped {ProjectHollowzLevel}>:texture = external {}
+
+            T_Mask<scoped {ProjectHollowzLevel}>:texture = external {}
+
+            T_Impulse_01<scoped {ProjectHollowzLevel}>:texture = external {}
+
+            T_FlareGeneric<scoped {ProjectHollowzLevel}>:texture = external {}
+
+            T_Flame_04<scoped {ProjectHollowzLevel}>:texture = external {}
+
+            T_FireNoise2<scoped {ProjectHollowzLevel}>:texture = external {}
+
+            T_ECaustics2<scoped {ProjectHollowzLevel}>:texture = external {}
+
+            T_ECaustics<scoped {ProjectHollowzLevel}>:texture = external {}
+
+            T_Caustic_9<scoped {ProjectHollowzLevel}>:texture = external {}
+
+            T_CausticTrail_9<scoped {ProjectHollowzLevel}>:texture = external {}
+
+            T_Caustics<scoped {ProjectHollowzLevel}>:texture = external {}
+
+            T_BulletSmoke<scoped {ProjectHollowzLevel}>:texture = external {}
+
+            T_BellLight<scoped {ProjectHollowzLevel}>:texture = external {}
+
+sA_Megapack_v1 := module:
+    sA_StylizedAttacksPack := module:
+        FX := module:
+            NiagaraSystems := module:
+
+
+        Models := module:
+            SM_GroundCrackAura2<scoped {ProjectHollowzLevel}>:mesh = external {}
+
+            SM_GroundCrackAura<scoped {ProjectHollowzLevel}>:mesh = external {}
+
+            SM_Plane<scoped {ProjectHollowzLevel}>:mesh = external {}
+
+            SM_Meteor_Windy<scoped {ProjectHollowzLevel}>:mesh = external {}
+
+            SM_Hemi_Sphere<scoped {ProjectHollowzLevel}>:mesh = external {}
+
+            SM_DebrisRock_3<scoped {ProjectHollowzLevel}>:mesh = external {}
+
+            SM_DebrisRock_2<scoped {ProjectHollowzLevel}>:mesh = external {}
+
+            SM_DebrisRock_1<scoped {ProjectHollowzLevel}>:mesh = external {}
+
+            SM_Meteor<scoped {ProjectHollowzLevel}>:mesh = external {}
+
+            SM_LongPlane<scoped {ProjectHollowzLevel}>:mesh = external {}
+
+            SM_GroundCrackAura3<scoped {ProjectHollowzLevel}>:mesh = external {}
+
+        Materials := module:
+            MI_Ground_Crack_2<scoped {ProjectHollowzLevel}>:material = external {}
+
+            M_Gradient_Vert2<scoped {ProjectHollowzLevel}>:material = external {}
+
+            M_Basic_Particle_2<scoped {ProjectHollowzLevel}>:material = external {}
+
+            MI_Smoke_1<scoped {ProjectHollowzLevel}>:material = external {}
+
+            M_Smoke<scoped {ProjectHollowzLevel}>:material = external {}
+
+            MI_Radial_2<scoped {ProjectHollowzLevel}>:material = external {}
+
+            M_Master_RadialBeam<scoped {ProjectHollowzLevel}>:material = external {}
+
+            M_Smoke_01<scoped {ProjectHollowzLevel}>:material = external {}
+
+            M_RadialGradient_1<scoped {ProjectHollowzLevel}>:material = external {}
+
+            M_Meteor<scoped {ProjectHollowzLevel}>:material = external {}
+
+            M_Ground_Crack<scoped {ProjectHollowzLevel}>:material = external {}
+
+            M_Ground_Crack_Masked<scoped {ProjectHollowzLevel}>:material = external {}
+
+            MI_Hit_1<scoped {ProjectHollowzLevel}>:material = external {}
+
+            MI_Flame_1<scoped {ProjectHollowzLevel}>:material = external {}
+
+            MI_Fireball<scoped {ProjectHollowzLevel}>:material = external {}
+
+            Textures := module:
+                T_Ground_Crack_2<scoped {ProjectHollowzLevel}>:texture = external {}
+
+                T_Gradient_Vertical<scoped {ProjectHollowzLevel}>:texture = external {}
+
+                T_Circle_1<scoped {ProjectHollowzLevel}>:texture = external {}
+
+                T_Smoke_1<scoped {ProjectHollowzLevel}>:texture = external {}
+
+                T_FireBall<scoped {ProjectHollowzLevel}>:texture = external {}
+
+                T_Smoke_SubUV<scoped {ProjectHollowzLevel}>:texture = external {}
+
+                T_Radial_1<scoped {ProjectHollowzLevel}>:texture = external {}
+
+                T_Noise10<scoped {ProjectHollowzLevel}>:texture = external {}
+
+                T_Meteor_normal<scoped {ProjectHollowzLevel}>:texture = external {}
+
+                T_Meteor_basecolor<scoped {ProjectHollowzLevel}>:texture = external {}
+
+                T_Meteor_Ao<scoped {ProjectHollowzLevel}>:texture = external {}
+
+                T_Ground_Crack<scoped {ProjectHollowzLevel}>:texture = external {}
+
+                T_Hit_Circle<scoped {ProjectHollowzLevel}>:texture = external {}
+
+                T_Ground_Crack_3<scoped {ProjectHollowzLevel}>:texture = external {}
+
+                T_FlameUV_1<scoped {ProjectHollowzLevel}>:texture = external {}
+
+    sA_Projectilevfx := module:
+        Vfx := module:
+            Fx := module:
+                Niagara_Systems := module:
+
+
+            Materials := module:
+                MI_Hit_Skull_Cloud<scoped {ProjectHollowzLevel}>:material = external {}
+
+                MI_Hit_Skull<scoped {ProjectHollowzLevel}>:material = external {}
+
+                M_AdditiveScrollNiagara<scoped {ProjectHollowzLevel}>:material = external {}
+
+                MI_Dark_Hit_Skull_Cloud<scoped {ProjectHollowzLevel}>:material = external {}
+
+                M_ABScrollNiagara<scoped {ProjectHollowzLevel}>:material = external {}
+
+                M_Simple_Bram<scoped {ProjectHollowzLevel}>:material = external {}
+
+                MI_DarkProjectile_4<scoped {ProjectHollowzLevel}>:material = external {}
+
+                MI_Dark_Hit_Skull<scoped {ProjectHollowzLevel}>:material = external {}
+
+                MI_Projectile_3<scoped {ProjectHollowzLevel}>:material = external {}
+
+                MI_DarkProjectile_3<scoped {ProjectHollowzLevel}>:material = external {}
+
+                MI_Tail_3<scoped {ProjectHollowzLevel}>:material = external {}
+
+                MI_Tail_1<scoped {ProjectHollowzLevel}>:material = external {}
+
+                MI_Projectile_2<scoped {ProjectHollowzLevel}>:material = external {}
+
+                MI_Projectile_1<scoped {ProjectHollowzLevel}>:material = external {}
+
+                MI_DarkTail_3<scoped {ProjectHollowzLevel}>:material = external {}
+
+                MI_DarkProjectile_2<scoped {ProjectHollowzLevel}>:material = external {}
+
+                MI_DarkProjectile<scoped {ProjectHollowzLevel}>:material = external {}
+
+                Textures := module:
+                    T_Skull_Solo<scoped {ProjectHollowzLevel}>:texture = external {}
+
+                    T_Skull_Cloud<scoped {ProjectHollowzLevel}>:texture = external {}
+
+                    T_Noise000<scoped {ProjectHollowzLevel}>:texture = external {}
+
+                    T_Noise00<scoped {ProjectHollowzLevel}>:texture = external {}
+
+                    T_Beam_01<scoped {ProjectHollowzLevel}>:texture = external {}
+
+                    T_Projectile_4<scoped {ProjectHollowzLevel}>:texture = external {}
+
+                    T_Projectile_3<scoped {ProjectHollowzLevel}>:texture = external {}
+
+                    T_Trail_3<scoped {ProjectHollowzLevel}>:texture = external {}
+
+                    T_Projectile_Tail<scoped {ProjectHollowzLevel}>:texture = external {}
+
+                    T_Projectile_2<scoped {ProjectHollowzLevel}>:texture = external {}
+
+                    T_Projectile_1<scoped {ProjectHollowzLevel}>:texture = external {}
+
+                    T_Noise02<scoped {ProjectHollowzLevel}>:texture = external {}
+
+            Models := module:
+                SM_Fx_Sphere<scoped {ProjectHollowzLevel}>:mesh = external {}
+
+                SM_Projectile_1<scoped {ProjectHollowzLevel}>:mesh = external {}
+
+sA_Rayvfx := module:
+    Fx := module:
+        NiagaraSystems := module:
+
+
+    Models := module:
+        SM_UV_Sphere<scoped {ProjectHollowzLevel}>:mesh = external {}
+
+        SM_RayTube_1<scoped {ProjectHollowzLevel}>:mesh = external {}
+
+    Materials := module:
+        MI_SolidPanner_2<scoped {ProjectHollowzLevel}>:material = external {}
+
+        M_Master_Solid_Panner<scoped {ProjectHollowzLevel}>:material = external {}
+
+        MI_Refract_Inst<scoped {ProjectHollowzLevel}>:material = external {}
+
+        M_Master_RefractFresnel<scoped {ProjectHollowzLevel}>:material = external {}
+
+        MI_Fresnel_Space<scoped {ProjectHollowzLevel}>:material = external {}
+
+        M_Master_Fresnel<scoped {ProjectHollowzLevel}>:material = external {}
+
+        M_sA_Aura<scoped {ProjectHollowzLevel}>:material = external {}
+
+        M_AdditiveScrollNiagara<scoped {ProjectHollowzLevel}>:material = external {}
+
+        M_ABScrollNiagara<scoped {ProjectHollowzLevel}>:material = external {}
+
+        MI_Projectile_3<scoped {ProjectHollowzLevel}>:material = external {}
+
+        MI_Energy_1_Dark<scoped {ProjectHollowzLevel}>:material = external {}
+
+        MI_Enegy_1<scoped {ProjectHollowzLevel}>:material = external {}
+
+        MI_Aura_2<scoped {ProjectHollowzLevel}>:material = external {}
+
+        Textures := module:
+            T_Noise09<scoped {ProjectHollowzLevel}>:texture = external {}
+
+            T_Noise03<scoped {ProjectHollowzLevel}>:texture = external {}
+
+            T_Space_1<scoped {ProjectHollowzLevel}>:texture = external {}
+
+            T_Noise10<scoped {ProjectHollowzLevel}>:texture = external {}
+
+            T_Noise000<scoped {ProjectHollowzLevel}>:texture = external {}
+
+            T_Noise00<scoped {ProjectHollowzLevel}>:texture = external {}
+
+            T_Energy_1<scoped {ProjectHollowzLevel}>:texture = external {}
+
+            T_Beam_01<scoped {ProjectHollowzLevel}>:texture = external {}
+
+BigNiagaraBundle := module:
+    NiagaraEffectMix4 := module:
+        Effects := module:
+
+
+Textures := module:
+    LowResBlurredNoise<scoped {ProjectHollowzLevel}>:texture = external {}
+
+    VerseDeviceStarter_GlassDoor_N<scoped {ProjectHollowzLevel}>:texture = external {}
+
+    T_LightConeNoise<scoped {ProjectHollowzLevel}>:texture = external {}
+
+    T_LightBeam_Mask_01<scoped {ProjectHollowzLevel}>:texture = external {}
+
+    T_DoorHologram_01<scoped {ProjectHollowzLevel}>:texture = external {}
+
+    Scifi_Building_Gradient<scoped {ProjectHollowzLevel}>:texture = external {}
+
+sA_SwordVfx := module:
+    Materials := module:
+        M_Splatters<scoped {ProjectHollowzLevel}>:material = external {}
+
+        M_Splatters1<scoped {ProjectHollowzLevel}>:material = external {}
+
+        Textures := module:
+            T_Splatters_Color<scoped {ProjectHollowzLevel}>:texture = external {}
+
+            T_Splatters_Mask<scoped {ProjectHollowzLevel}>:texture = external {}
+
+            T_Noise_CloudySharp<scoped {ProjectHollowzLevel}>:texture = external {}
+
+    Fx := module:
+
+
+Assets := module:
+    Billboard := module:
+        M_Billboard_Parkour<scoped {ProjectHollowzLevel}>:material = external {}
+
+        MI_Billboard_Parkour_01<scoped {ProjectHollowzLevel}>:material = external {}
+
+BlinkAndDashVFX := module:
+    Materials := module:
+        Blink_Curse := module:
+            MI_VFX_Trail<scoped {ProjectHollowzLevel}>:material = external {}
+
+        Blink_Fire := module:
+            M_VFX_Smoke<scoped {ProjectHollowzLevel}>:material = external {}
+
+            M_VFX_Radial_Wave<scoped {ProjectHollowzLevel}>:material = external {}
+
+            M_VFX_Fire_Aura<scoped {ProjectHollowzLevel}>:material = external {}
+
+            MI_VFX_Fire_Sphere_Aura<scoped {ProjectHollowzLevel}>:material = external {}
+
+            MI_Radial_Refraction<scoped {ProjectHollowzLevel}>:material = external {}
+
+        Dash_Wind := module:
+            M_VFX_WindAura<scoped {ProjectHollowzLevel}>:material = external {}
+
+            MI_VFX_Wind_Streaks<scoped {ProjectHollowzLevel}>:material = external {}
+
+            MI_VFX_WindCurve<scoped {ProjectHollowzLevel}>:material = external {}
+
+            MI_VFX_Sparks_Leaves<scoped {ProjectHollowzLevel}>:material = external {}
+
+        Master := module:
+            M_VFX_Trail<scoped {ProjectHollowzLevel}>:material = external {}
+
+            M_VFX_Sphere_Aura<scoped {ProjectHollowzLevel}>:material = external {}
+
+            M_VFX_Smoke_1_Refraction<scoped {ProjectHollowzLevel}>:material = external {}
+
+            M_VFX_Particle<scoped {ProjectHollowzLevel}>:material = external {}
+
+            M_VFX_Embers<scoped {ProjectHollowzLevel}>:material = external {}
+
+            M_Radial_Refraction<scoped {ProjectHollowzLevel}>:material = external {}
+
+        Shared := module:
+            M_VFX_Smoke_1_NoRefr<scoped {ProjectHollowzLevel}>:material = external {}
+
+            MI_VFX_Spark_2<scoped {ProjectHollowzLevel}>:material = external {}
+
+            MI_VFX_Spark_1<scoped {ProjectHollowzLevel}>:material = external {}
+
+            MI_VFX_Flare_2<scoped {ProjectHollowzLevel}>:material = external {}
+
+    Meshes := module:
+        SM_VFX_Sphere<scoped {ProjectHollowzLevel}>:mesh = external {}
+
+        SM_VFX_Planes_1<scoped {ProjectHollowzLevel}>:mesh = external {}
+
+        SM_VFX_Curve_6<scoped {ProjectHollowzLevel}>:mesh = external {}
+
+        SM_VFX_Cone_1<scoped {ProjectHollowzLevel}>:mesh = external {}
+
+    Textures := module:
+        Flare := module:
+            T_VFX_Flare_4<scoped {ProjectHollowzLevel}>:texture = external {}
+
+            T_VFX_Flare_3<scoped {ProjectHollowzLevel}>:texture = external {}
+
+            T_VFX_Flare_2<scoped {ProjectHollowzLevel}>:texture = external {}
+
+        Glow := module:
+            T_VFX_Glow_3<scoped {ProjectHollowzLevel}>:texture = external {}
+
+            T_VFX_Glow_1<scoped {ProjectHollowzLevel}>:texture = external {}
+
+        Gradient := module:
+            T_VFX_Gradient_5<scoped {ProjectHollowzLevel}>:texture = external {}
+
+            T_VFX_Gradient_2<scoped {ProjectHollowzLevel}>:texture = external {}
+
+        Mask := module:
+            T_VFX_Mask_5<scoped {ProjectHollowzLevel}>:texture = external {}
+
+            T_VFX_Mask_4<scoped {ProjectHollowzLevel}>:texture = external {}
+
+            T_VFX_Mask_3<scoped {ProjectHollowzLevel}>:texture = external {}
+
+            T_VFX_Mask_2<scoped {ProjectHollowzLevel}>:texture = external {}
+
+            T_VFX_Mask_1<scoped {ProjectHollowzLevel}>:texture = external {}
+
+        Noise := module:
+            T_VFX_Noise_9<scoped {ProjectHollowzLevel}>:texture = external {}
+
+            T_VFX_Noise_8<scoped {ProjectHollowzLevel}>:texture = external {}
+
+            T_VFX_Noise_6<scoped {ProjectHollowzLevel}>:texture = external {}
+
+            T_VFX_Noise_3<scoped {ProjectHollowzLevel}>:texture = external {}
+
+            T_VFX_Noise_2<scoped {ProjectHollowzLevel}>:texture = external {}
+
+            T_VFX_Noise_19<scoped {ProjectHollowzLevel}>:texture = external {}
+
+            T_VFX_Noise_18<scoped {ProjectHollowzLevel}>:texture = external {}
+
+            T_VFX_Noise_15<scoped {ProjectHollowzLevel}>:texture = external {}
+
+            T_VFX_Noise_14<scoped {ProjectHollowzLevel}>:texture = external {}
+
+            T_VFX_Noise_13<scoped {ProjectHollowzLevel}>:texture = external {}
+
+            T_VFX_Noise_11<scoped {ProjectHollowzLevel}>:texture = external {}
+
+            T_VFX_Noise_10<scoped {ProjectHollowzLevel}>:texture = external {}
+
+            T_VFX_Noise_1<scoped {ProjectHollowzLevel}>:texture = external {}
+
+        Other := module:
+            T_VFX_Spark_2<scoped {ProjectHollowzLevel}>:texture = external {}
+
+            T_VFX_Spark_1<scoped {ProjectHollowzLevel}>:texture = external {}
+
+            T_VFX_Radial_Normal<scoped {ProjectHollowzLevel}>:texture = external {}
+
+            T_VFX_Radial_2_Normal<scoped {ProjectHollowzLevel}>:texture = external {}
+
+            T_VFX_Leaf<scoped {ProjectHollowzLevel}>:texture = external {}
+
+            T_VFX_Fire_Mask_2<scoped {ProjectHollowzLevel}>:texture = external {}
+
+            T_VFX_Fire_Mask_1<scoped {ProjectHollowzLevel}>:texture = external {}
+
+        Smoke := module:
+            T_VFX_Smoke_1<scoped {ProjectHollowzLevel}>:texture = external {}
+
+    VFX_Niagara := module:
+
+
+Materials := module:
+    M_ScifiBuilding_Door_01<scoped {ProjectHollowzLevel}>:material = external {}
+
+    M_ScifiBuilding_01<scoped {ProjectHollowzLevel}>:material = external {}
+
+    M_LightBeacon<scoped {ProjectHollowzLevel}>:material = external {}
+
+    MI_ScifiBuilding_Door_01<scoped {ProjectHollowzLevel}>:material = external {}
+
+    MI_ScifiBuilding_02<scoped {ProjectHollowzLevel}>:material = external {}
+
+    MI_ScifiBuilding_01<scoped {ProjectHollowzLevel}>:material = external {}
+
+    MI_Light_Strip_Orange<scoped {ProjectHollowzLevel}>:material = external {}
+
+    MI_Light_Strip_02<scoped {ProjectHollowzLevel}>:material = external {}
+
+    MI_Light_Strip<scoped {ProjectHollowzLevel}>:material = external {}
+
+    MI_LightBeacon<scoped {ProjectHollowzLevel}>:material = external {}
+
+    MI_HandScanner_01<scoped {ProjectHollowzLevel}>:material = external {}
+
+    Background := module:
+        M_CityEmissive<scoped {ProjectHollowzLevel}>:material = external {}
+
+        MI_CityEmissive<scoped {ProjectHollowzLevel}>:material = external {}
+
+    Beacon := module:
+        M_LightShaft<scoped {ProjectHollowzLevel}>:material = external {}
+
+        MI_LightShaft_OuterFade<scoped {ProjectHollowzLevel}>:material = external {}
+
+        MI_LightShaft_InnerGlow<scoped {ProjectHollowzLevel}>:material = external {}
+
+        MI_LightShaft_InnerFade<scoped {ProjectHollowzLevel}>:material = external {}
+
+    Floor := module:
+        M_FloorPanel<scoped {ProjectHollowzLevel}>:material = external {}
+
+        M_FloorGrid<scoped {ProjectHollowzLevel}>:material = external {}
+
+        MI_FloorPanel<scoped {ProjectHollowzLevel}>:material = external {}
+
+        MI_FloorGrid<scoped {ProjectHollowzLevel}>:material = external {}
+
+    Road := module:
+        M_Road<scoped {ProjectHollowzLevel}>:material = external {}
+
+        MI_Road<scoped {ProjectHollowzLevel}>:material = external {}
+
+Meshes := module:
+    VerseDeviceStarter_ScifiBuilding_01<scoped {ProjectHollowzLevel}>:mesh = external {}
+
+    BoxBarrior<scoped {ProjectHollowzLevel}>:mesh = external {}
+
+    Beacon_01<scoped {ProjectHollowzLevel}>:mesh = external {}
+
+    Ambient_LightBeam_01<scoped {ProjectHollowzLevel}>:mesh = external {}
+
+    Floor := module:
+        Floor_Panel_TR<scoped {ProjectHollowzLevel}>:mesh = external {}
+
+        Floor_Panel_SQ<scoped {ProjectHollowzLevel}>:mesh = external {}
+
+        Floor_Panel_PR<scoped {ProjectHollowzLevel}>:mesh = external {}
+
+    Road := module:
+        Road_Straight_01<scoped {ProjectHollowzLevel}>:mesh = external {}
+
+        Road_Curved_01<scoped {ProjectHollowzLevel}>:mesh = external {}
+
+sA_StylizedVfxMix_Fx := module:
+    Effects := module:
+
+
+    Fx_Meshes := module:
+        SM_Cloud<scoped {ProjectHollowzLevel}>:mesh = external {}
+
+    Materials := module:
+        M_Master_Flame<scoped {ProjectHollowzLevel}>:material = external {}
+
+        M_Master_Cloud_White<scoped {ProjectHollowzLevel}>:material = external {}
+
+        MI_Flame<scoped {ProjectHollowzLevel}>:material = external {}
+
+        Textures := module:
+            T_Noise_Liquid<scoped {ProjectHollowzLevel}>:texture = external {}
