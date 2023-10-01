@@ -1,0 +1,1671 @@
+General descritpions
+
+    Verse is a functional logic language (like Curry or Mercury)
+    Verse is a declarative language: a variable names a single value, not a cell whose value changes over time
+    Verse is lenient but not strict:
+    Like strict: everything gets evaluated in the end
+    Like lazy: functions can be called before the argument has a value
+    Verse has an unusual static type system: types are firstclass values
+    Verse has an effect system, rather than using monads
+    Verse is open: Open spec, open-source compiler, verifier, published papers, runtime under permissive open-source license with no IP encumberances
+    Mutable state, I/O, and other effects
+    Pervasive transactional memory
+    Structs, classes, inheritance
+
+Ideas & visions
+
+    Kick functional logic programming out the lab and into the mainstream
+
+    Learnable as a first language (c.f. Javascript yes, C++ no)
+
+    Stretches from end users to professional developers
+
+    Transactional memory at scale
+
+    Very strong stability guarantees
+
+    A radical new approach to types
+
+    Extensible: mechanisms for the language to grow over time, without breaking code
+
+
+2402
+2403
+2404
+2405
+2406
+2407
+2408
+2409
+2410
+2411
+2412
+2413
+2414
+2415
+2416
+2417
+2418
+2419
+2420
+2421
+2422
+2423
+2424
+2425
+2426
+2427
+2428
+2429
+2430
+2431
+2432
+2433
+2434
+2435
+2436
+2437
+2438
+2439
+2440
+2441
+2442
+2443
+2444
+2445
+2446
+2447
+2448
+2449
+2450
+In submission, March 2023,
+Augustsson, Breitner, Claessen, Jhala, Peyton Jones, Shivers, Steele, Sweeney
+can never again be used to perform a substitution in that block unless new occurrences of 𝑥 are
+injected into the block by a substitution performed in an enclosing block, in which case, the block
+metric for the outer block will be strictly smaller. Specifically, each application of
+• choose strictly reduces ♯choose;
+• seq-assoc or eqn-float strictly reduces ♯semi (leaving ♯choose unchanged);
+• subst strictly reduces ♯cands (leaving ♯semi, ♯choose unchanged), as it eliminates a variable
+from the block ℓ that the substitution spans;
+• u-tup strictly reduces size (leaving cands, ♯semi, ♯choose unchanged), as it preserves elim
+and hence cand, but reduces the size of ℓ;
+• u-lit, u-fail, u-occurs strictly reduces size (leaving cands, ♯semi, ♯choose unchanged);
+• var-swap strictly reduces swaps leaving the other components unchanged.
+Thus, as ♯(𝜎𝑖, 𝑏𝑖 ) is a strictly decreasing well-founded metric, the sequence (𝜎1, 𝑏1), . . . , is finite,
+and so any sequence of U0’ steps is guaranteed to terminate. □
+Lemma C.27. U0 is Noetherian for all tails 𝑡, rhs 𝑟 and expressions 𝑒.
+Proof. By induction on the structure of t, r and e, using Lemma C.26 for the base case. □
+Lemma C.28. U is locally confluent.
+Proof. Let Δ1 −→1 Δ′
+1 and Δ2 −→2 Δ′
+2 denote the two U reducts. If the reducts are disjoint, then
+the terms can be joined trivially in a single step via Lemma C.4. By symmetry it suffices to consider
+the case where Δ1 occurs under Δ2. Let us split cases on the rule used for Δ1.
+Case Δ1 via U − subst − var-swap join using Lemma C.6.
+Case Δ1 via var-swap join using Lemma C.29.
+Case Δ1 via subst join using Lemma C.30.
+□
+Lemma C.29 (var-swap under). If ΔU −→U Δ′
+U and ΔU ≡ 𝐸 [Δ] and Δ −→swap Δ′ then there
+exists Δ′′
+U such that Δ′
+U −→→swap Δ′′
+U and 𝐸 [Δ′] −→U Δ′′
+R .
+ΔU ≡ 𝐸 [Δ] 𝐸 [Δ′]
+Δ′
+U Δ′′
+U
+U
+var-swap
+U
+var-swap
+Proof. Split cases on the rule used in U.
+Case u-lit or var-swap : impossible as no var-swap redex under k1 = k2 or x = y.
+Case u-tup : Here, ΔU ≡ ⟨u1,. . ., un⟩ = ⟨v1,. . ., vn⟩ and wlog the var-swap redex is 𝑢′
+1 −→𝑢1 so
+join at u_1′ = v1; . . .; un = vn.
+Case u-fail : Here, ΔU ≡ hnf 𝑖 −→ hnf ′
+𝑖 so join at fail
+Case u-occurs : Here, ΔU ≡ x = V [ x ] and the var-swap redex is under V [ x ], i.e. 𝑉 [𝑥] −→subst
+𝑉 [𝑥]′ as the free variables are preserved by var-swap hence we can join at fail.
+Case hnf-swap : Here, ΔU ≡ hnf = 𝑥 and the var-swap redex is under hnf i.e. hnf −→subst
+hnf ′, hence join at 𝑥 = hnf ′.
+Case subst : via Lemma C.12.
+Case choose : via Lemma C.7.
+Case seq-assoc : Here, ΔU ≡ (𝑒𝑞; 𝑒1); 𝑒2 −→ 𝑒𝑞; (𝑒1; 𝑒2) ≡ Δ′
+U . Split cases on where Δ occurs.
+Case Δ ⊆ 𝑒𝑞 i.e. 𝑒𝑞 −→var-swap 𝑒𝑢′ Join at Δ′′
+U ≡ 𝑒𝑢′; (𝑒1; 𝑒2).
+Case Δ ⊆ 𝑒1 i.e. 𝑒1 −→var-swap 𝑒′
+1 Join at Δ′′
+U ≡ 𝑒𝑞; (𝑒′
+1; 𝑒2).
+50
+2451
+2452
+2453
+2454
+2455
+2456
+2457
+2458
+2459
+2460
+2461
+2462
+2463
+2464
+2465
+2466
+2467
+2468
+2469
+2470
+2471
+2472
+2473
+2474
+2475
+2476
+2477
+2478
+2479
+2480
+2481
+2482
+2483
+2484
+2485
+2486
+2487
+2488
+2489
+2490
+2491
+2492
+2493
+2494
+2495
+2496
+2497
+2498
+2499
+The Verse Calculus: a Core Calculus for Functional Logic Programming
+In submission, March 2023,
+Case Δ ⊆ 𝑒2 i.e. 𝑒2 −→var-swap 𝑒′
+2 Join at Δ′′
+U ≡ 𝑒𝑞; (𝑒1; 𝑒′
+2).
+Case eqn-float : ΔU ≡ 𝑣 = (𝑒𝑞; 𝑒1); 𝑒2 −→ 𝑒𝑞; (𝑣 = 𝑒1; 𝑒2) ≡ Δ′
+U . Split cases on where Δ occurs.
+Case Δ ⊆ 𝑣 i.e. 𝑣 −→var-swap 𝑣 ′ Join at Δ′′
+U ≡ 𝑒𝑞; (𝑣 ′ = 𝑒1; 𝑒2).
+Case Δ ⊆ 𝑒𝑞 i.e. 𝑒𝑞 −→var-swap 𝑒𝑢′ Join at Δ′′
+U ≡ 𝑒𝑢′; (𝑣 = 𝑒1; 𝑒2).
+Case Δ ⊆ 𝑒1 i.e. 𝑒1 −→var-swap 𝑒′
+1 Join at Δ′′
+U ≡ 𝑒𝑞; (𝑣 = 𝑒′
+1; 𝑒2).
+Case Δ ⊆ 𝑒2 i.e. 𝑒2 −→var-swap 𝑒′
+2 Join at Δ′′
+U ≡ 𝑒𝑞; (𝑣 = 𝑒1; 𝑒′
+2).
+□
+Lemma C.30 (subst-under). If ΔU −→U Δ′
+U and ΔU ≡ 𝐸 [Δ] and Δ −→subst Δ′ then there exists
+Δ′′
+U such that Δ′
+U −→→subst Δ′′
+U and 𝐸 [Δ′] −→U Δ′′
+U .
+ΔU ≡ 𝐸 [Δ] 𝐸 [Δ′]
+Δ′
+U Δ′′
+U
+U
+subst
+U
+subst
+Proof. Split cases on the rule used in U.
+Case u-lit or var-swap : impossible as no subst redex under k1 = k2 or x = y.
+Case u-tup : Here, ΔU ≡ ⟨u1,. . ., un⟩ = ⟨v1,. . ., vn⟩ and wlog the subst redex is 𝑢′
+1 −→𝑢1 so join at
+u_1′ = v1; . . .; un = vn.
+Case u-fail : Here, ΔU ≡ hnf 𝑖 −→ hnf ′
+𝑖 so join at fail
+Case u-occurs : Here, ΔU ≡ x = V [ x ] and the subst redex is under V [ x ], i.e. 𝑉 [𝑥] −→subst
+𝑉 [𝑥]′ as the free variables are preserved by subst hence we can join at fail.
+Case hnf-swap : Here, ΔU ≡ hnf = 𝑥 and the subst redex is under hnf i.e. hnf −→subst hnf ′,
+hence join at 𝑥 = hnf ′.
+Case subst : via Lemma C.14.
+Case choose : via Lemma C.7.
+Case seq-assoc : ΔU ≡ (𝑒𝑞; 𝑒1); 𝑒2 −→ 𝑒𝑞; (𝑒1; 𝑒2) ≡ Δ′
+U . Split cases on where Δ occurs.
+Case Δ ⊆ 𝑒𝑞 i.e. 𝑒𝑞 −→R′ 𝑒𝑢′ Join at Δ′′
+U ≡ 𝑒𝑢′; (𝑒1; 𝑒2).
+Case Δ ⊆ 𝑒1 i.e. 𝑒1 −→R′ 𝑒′
+1 Join at Δ′′
+U ≡ 𝑒𝑞; (𝑒′
+1; 𝑒2).
+Case Δ ⊆ 𝑒2 i.e. 𝑒2 −→R′ 𝑒′
+2 Join at Δ′′
+U ≡ 𝑒𝑞; (𝑒1; 𝑒′
+2).
+Case Δ ⊆ (𝑒𝑞; 𝑒1) i.e. subst : (𝑒𝑞; 𝑒1) −→ (𝑒𝑢′; 𝑒′
+1) Join at Δ′′
+U ≡ 𝑒𝑢′; (𝑒′
+1; 𝑒2).
+Case Δ ⊆ ((𝑒𝑞; 𝑒1); 𝑒2) i.e. subst : (𝑒𝑞; 𝑒1); 𝑒2 −→ (𝑒𝑢′; 𝑒′
+1); 𝑒′
+2 Join at Δ′′
+U ≡ 𝑒𝑢′; (𝑒′
+1; 𝑒′
+2).
+Case eqn-float : ΔU ≡ 𝑣 = (𝑒𝑞; 𝑒1); 𝑒2 −→ 𝑒𝑞; (𝑣 = 𝑒1; 𝑒2) ≡ Δ′
+U . Split cases on where Δ occurs.
+Case Δ ⊆ 𝑣 i.e. 𝑣 −→R′ 𝑣 ′ Join at Δ′′
+U ≡ 𝑒𝑞; (𝑣 ′ = 𝑒1; 𝑒2).
+Case Δ ⊆ 𝑒𝑞 i.e. 𝑒𝑞 −→R′ 𝑒𝑢′ Join at Δ′′
+U ≡ 𝑒𝑢′; (𝑣 = 𝑒1; 𝑒2).
+Case Δ ⊆ 𝑒1 i.e. 𝑒1 −→R′ 𝑒′
+1 Join at Δ′′
+U ≡ 𝑒𝑞; (𝑣 = 𝑒′
+1; 𝑒2).
+Case Δ ⊆ 𝑒2 i.e. 𝑒2 −→R′ 𝑒′
+2 Join at Δ′′
+U ≡ 𝑒𝑞; (𝑣 = 𝑒1; 𝑒′
+2).
+Case Δ ⊆ (𝑒𝑞; 𝑒1) i.e. subst : 𝑣 = (𝑒𝑞; 𝑒1); 𝑒2 −→ 𝑣 = (𝑒𝑢′; 𝑒′
+1); 𝑒2. Join at Δ′′
+U ≡ 𝑒𝑢′; (𝑣 =
+𝑒′
+1; 𝑒2).
+Case Δ ⊆ 𝑣 = (𝑒𝑞; 𝑒1); 𝑒2 i.e. subst : (𝑣 = 𝑒𝑞; 𝑒1); 𝑒2 −→ (𝑣 ′ = 𝑒𝑢′; 𝑒′
+1); 𝑒′
+2 Join at Δ′′
+U ≡
+𝑒𝑢′; (𝑣 ′ = 𝑒′
+1; 𝑒′
+2).
+□
+C.5 Normalization is Confluent
+Recall that N ≡ exi-swap + exi-float + var-swap + subst-var where
+subst-var 𝑋 [ x = y; e ] −→ (𝑋 {y/x}) [ x = y; e{y/x} ]
+51
+2500
+2501
+2502
+2503
+2504
+2505
+2506
+2507
+2508
+2509
+2510
+2511
+2512
+2513
+2514
+2515
+2516
+2517
+2518
+2519
+2520
+2521
+2522
+2523
+2524
+2525
+2526
+2527
+2528
+2529
+2530
+2531
+2532
+2533
+2534
+2535
+2536
+2537
+2538
+2539
+2540
+2541
+2542
+2543
+2544
+2545
+2546
+2547
+2548
+In submission, March 2023,
+Augustsson, Breitner, Claessen, Jhala, Peyton Jones, Shivers, Steele, Sweeney
+It will be convenient to factor out exi-float so let
+SS  subst-var + var-swap
+N ′  SS + exi-swap
+N  N ′ + exi-float
+Lemma C.31 (N-Confluent). N is confluent.
+Proof. The above result follows in two steps. First we show that N ′– i.e. normalization-without-
+exi-float – is confluent in Lemma C.35. Second we show that N ′strongly postpones after exi-
+float Lemma C.34. Consequently, each −→→N can be rewritten as the composition of −→→exi-float
+followed by −→→N′ after which the following diagram completes the proof, where (1) Lemma C.32
+(2) Lemma C.33 (3) Lemma C.35. (4) Lemma C.35
+•
+• •
+• •
+• (1) •
+(2) (2)
+(3) (3)
+(4)
+exi-float exi-float
+exi-float exi-float
+N′ N′
+N′
+N′ N′
+N′
+N′ N′
+N′
+N′
+exi-float
+N′
+exi-float
+□
+Lemma C.32. If 𝑒 −→→exi-float 𝑒1 and 𝑒 −→→exi-float 𝑒2 then exists 𝑒1 −→→exi-float 𝑒′
+1, 𝑒2 −→→exi-float
+𝑒′
+2, such that 𝑒′
+1 ↓exi-swap 𝑒′
+2.
+Proof. On each side add the (missing) exi-float steps on the other side, and then use (multiple)
+exi-swap to join. □
+Lemma C.33. exi-float strongly commutes with N ′.
+Proof. Split cases on each possible case of N ′, the diamond is completed trivially as the rules
+are non-overlapping. □
+Lemma C.34. N ′strongly postpones after exi-float, so N∗ ≡ exi-float∗ · N ′∗.
+Proof. Split cases on each possible case of N ′; the diamond is completed trivially as the rules
+are non-overlapping. □
+Lemma C.35. N ′is confluent.
+52
+2549
+2550
+2551
+2552
+2553
+2554
+2555
+2556
+2557
+2558
+2559
+2560
+2561
+2562
+2563
+2564
+2565
+2566
+2567
+2568
+2569
+2570
+2571
+2572
+2573
+2574
+2575
+2576
+2577
+2578
+2579
+2580
+2581
+2582
+2583
+2584
+2585
+2586
+2587
+2588
+2589
+2590
+2591
+2592
+2593
+2594
+2595
+2596
+2597
+The Verse Calculus: a Core Calculus for Functional Logic Programming
+In submission, March 2023,
+Proof. Via the following diagram, where: (1) is Lemma C.36; (2) is Lemma C.40; (3) is Lemma C.39;
+(4) is Lemma C.38.
+•
+• • • •
+(1) (4) (1)
+(2) (2)
+(3)
+N′ N′
+𝐸 𝐸
+S SS S S S S S𝐸 𝐸
+S S S SN′ N′
+S S S S
+□
+Lemma C.36. If 𝑒 −→→N′ 𝑒′ there exists 𝑒′′ such that 𝑒′ −→→S S 𝑒′′ and 𝑒 −→→exi-swap · −→→S S 𝑒′′.
+𝑒 𝑒′
+• 𝑒′′
+exi-swap
+S S
+S S
+N′
+Proof. By using Lemma B.25 with the facts that SS is confluent (Lemma C.39) and SS hops
+after exi-swap (Lemma C.37). □
+Lemma C.37. SS(resp. U) hops after exi-swap.
+Proof. By splitting cases on the SS(resp. U) reduction that precedes the exi-swap.
+Case var-swap Let the Δswap ≡ 𝑋 [ x = y ]. If the exi-swap preserves the order of 𝑥 and 𝑦 then
+the result follows trivially (as the reductions are non-overlapping.) If the exi-swap toggles the
+order then the result follows via the diagram
+∃𝑥, 𝑦. . . . 𝑋 [𝑥 = 𝑦] ∃𝑥, 𝑦. . . . 𝑋 [𝑦 = 𝑥]
+∃𝑦, 𝑥 . . . . 𝑋 [𝑥 = 𝑦] ∃𝑦, 𝑥 . . . . 𝑋 [𝑦 = 𝑥]
+exi-swap
+var-swap
+exi-swap
+var-swap
+Case non-var-swap An U reduction other than var-swap is variable-order independent, so the
+sequence of U-step followed by exi-swap is equivalent to first doing the exi-swap and then
+the Ustep.
+□
+Lemma C.38. exi-swap is confluent.
+Proof. Trivial, via the diamond property. □
+Lemma C.39. SS = subst-var + swap is confluent.
+Proof. Note that SS is a subset of U; the proof follows similar to the proof of Lemma C.19
+(ignoring the bits about u-tup and u-lit and u-fail and substituting HNF values.) □
+Lemma C.40. SScommutes with N ′.
+53
+2598
+2599
+2600
+2601
+2602
+2603
+2604
+2605
+2606
+2607
+2608
+2609
+2610
+2611
+2612
+2613
+2614
+2615
+2616
+2617
+2618
+2619
+2620
+2621
+2622
+2623
+2624
+2625
+2626
+2627
+2628
+2629
+2630
+2631
+2632
+2633
+2634
+2635
+2636
+2637
+2638
+2639
+2640
+2641
+2642
+2643
+2644
+2645
+2646
+In submission, March 2023,
+Augustsson, Breitner, Claessen, Jhala, Peyton Jones, Shivers, Steele, Sweeney
+Proof. Recall that N ′ ≡ SS + exi-swap. The proof follows by observing that SS half-commutes
+with exi-swap Lemma C.41, recalling that SS is confluent Lemma C.39, after which Lemma B.27
+yields the conclusion SS commutes with SS + exi-swap ≡ N ′. □
+Lemma C.41. SS half-commutes with exi-swap.
+Proof. Recall that SS ≡ subst-var + var-swap. Split cases and show each reduction half-
+commutes with exi-swap.
+Case subst-var If the exi-swap occurs under subst-var then they trivially commute as the
+variable order is unaffected by the exi-swap. If the subst-var occurs under exi-swap the proof
+is completed by the following diagram.
+∃𝑦, 𝑥 . . . . 𝑋 [𝑥 = 𝑦] ∃𝑥, 𝑦. . . . 𝑋 [𝑥 = 𝑦]
+∃𝑥, 𝑦. . . . 𝑋 [𝑦 = 𝑥]
+∃𝑦, 𝑥 . . . . 𝑋 {𝑦/𝑥 }[𝑥 = 𝑦] ∃𝑥, 𝑦. . . . 𝑋 {𝑦/𝑥 }[𝑥 = 𝑦] ∃𝑥, 𝑦. . . . 𝑋 {𝑥/𝑦}[𝑦 = 𝑥]
+exi-swap
+var-swap
+subst-var
+subst-var
+exi-swap var-swap+subst-var
+Case var-swap (under exi-swap) The non-trivial cases are where the same variables 𝑥, 𝑦 are
+being swapped by both rules (otherwise, the reductions half-commutes trivially via the
+diamond property). For the variables to be the same, the var-swap must occur under the
+exi-swap (as otherwise the same variables are not in scope.) Hence, the proof is completed by
+the following diagram.
+∃𝑥, 𝑦. . . . 𝑋 [𝑥 = 𝑦] ∃𝑦, 𝑥 . . . . 𝑋 [𝑥 = 𝑦]
+∃𝑥, 𝑦. . . . 𝑋 [𝑦 = 𝑥] ∃𝑦, 𝑥 . . . . 𝑋 [𝑦 = 𝑥]
+var-swap
+exi-swap
+var-swap
+exi-swap
+□
+C.6 Unification + Normalization is Confluent
+Recall that
+N  exi-float + exi-swap + SS
+and define
+U′  U + exi-swap
+Lemma C.42. U ∪ N is confluent.
+Proof. We prove U∪N is confluent by a generalization of the proof of Lemma C.31 where we use
+the full U relation (instead of the subset SS). First we show that U’ – i.e. U ∪ N without-exi-float
+– is confluent Lemma C.45. Second we show that U’ strongly postpones after exi-float Lemma C.44.
+Consequently, each −→→U∪N can be rewritten as the composition of −→→exi-float followed by −→→U′
+54
+2647
+2648
+2649
+2650
+2651
+2652
+2653
+2654
+2655
+2656
+2657
+2658
+2659
+2660
+2661
+2662
+2663
+2664
+2665
+2666
+2667
+2668
+2669
+2670
+2671
+2672
+2673
+2674
+2675
+2676
+2677
+2678
+2679
+2680
+2681
+2682
+2683
+2684
+2685
+2686
+2687
+2688
+2689
+2690
+2691
+2692
+2693
+2694
+2695
+The Verse Calculus: a Core Calculus for Functional Logic Programming
+In submission, March 2023,
+after which the following diagram completes the proof.
+•
+• •
+• •
+• • •
+• •
+• •
+•
+exi-float exi-float
+exi-float exi-float
+U′ U′
+U′
+U′ U′
+U′
+U′ U′
+𝐿𝑒𝑚𝑚𝑎 𝐶.32
+𝐿𝑒𝑚𝑚𝑎 𝐶.45
+U′
+exi-float
+U′
+𝐿𝑒𝑚𝑚𝑎 𝐶.43
+𝐿𝑒𝑚𝑚𝑎 𝐶.45
+U′
+exi-float
+𝐿𝑒𝑚𝑚𝑎 𝐶.43
+U′
+𝐿𝑒𝑚𝑚𝑎 𝐶.45
+□
+Lemma C.43. exi-float strongly commutes with U’.
+Proof. Split cases on each possible case of U’; the diamond is completed trivially as the rules
+are non-overlapping. □
+Lemma C.44. Let U′  U +exi-swap. Ustrongly postpones after exi-float, so U′∗ ≡ exi-float∗ ·U∗.
+Proof. Same as Lemma C.34. □
+Lemma C.45. Let U′  U + exi-swap. U′ is confluent.
+Proof. Via the following diagram, where: (1) is Lemma C.46; (2) is Lemma C.47; (3) is Lemma C.19;
+(4) is Lemma C.38.
+•
+• • • •
+(1) (4) (1)
+(2) (2)
+(3)
+U′ U′
+𝐸 𝐸
+UU U U𝐸 𝐸
+U UU′ U′
+U U
+□
+55
+2696
+2697
+2698
+2699
+2700
+2701
+2702
+2703
+2704
+2705
+2706
+2707
+2708
+2709
+2710
+2711
+2712
+2713
+2714
+2715
+2716
+2717
+2718
+2719
+2720
+2721
+2722
+2723
+2724
+2725
+2726
+2727
+2728
+2729
+2730
+2731
+2732
+2733
+2734
+2735
+2736
+2737
+2738
+2739
+2740
+2741
+2742
+2743
+2744
+In submission, March 2023,
+Augustsson, Breitner, Claessen, Jhala, Peyton Jones, Shivers, Steele, Sweeney
+Lemma C.46. Let U′ = U + exi-swap. If 𝑒 −→→U′ 𝑒′ there exists 𝑒′′ such that 𝑒′ −→→U 𝑒′′ and
+𝑒 −→→exi-swap · −→→U 𝑒′′.
+𝑒 𝑒′
+• 𝑒′′
+exi-swap
+U
+U
+U′
+Proof. (Similar to Lemma C.36), By using Lemma B.25 with the facts that U is confluent
+(Lemma C.19) and U hops after exi-swap (Lemma C.37). □
+Lemma C.47. Let U′ = U + exi-swap. U’ commutes with U.
+Proof. The proof follows by observing that U half-commutes with exi-swap Lemma C.48, recall-
+ing that U is confluent Lemma C.19, after which Lemma B.27 yields the conclusion U commutes
+with U + exi-swap ≡ U′. □
+Lemma C.48. U half-commutes with exi-swap.
+Proof. Same as Lemma C.41; the rules in Uother than those in the subset SS trivially half-
+commutes as they do not overlap with exi-swap. □
+C.7 U ∪ N Commute With A ∪ G ∪ C
+Lemma C.49 (U-A-Comm). U and A commute.
+Proof. We show that U ∗-commutes with A and hence commutes via Lemma B.34. Let ΔU −→U
+Δ′
+U and ΔA −→A Δ′
+A denote the reducts for U and A respectively.
+Case: ΔU and ΔA disjoint via Lemma C.4.
+Case: ΔU ⊆ ΔA via Lemma C.5.
+Case: ΔA ⊆ ΔU via Lemma C.6.
+□
+Lemma C.50 (U − G-Comm). U and G commute.
+Proof. We show that U ∗-commutes commutes wth G, and hence by Lemma B.34, U commutes
+wth G. Let ΔU −→U Δ′
+U and ΔG −→G Δ′
+G denote the reducts for U and G respectively. If the reducts
+are disjoint then terms can be trivially joined. Let us split cases on whether ΔU occurs under ΔG
+or vice versa.
+Case ΔU ⊆ ΔG : via Lemma C.9.
+Case ΔG ⊆ ΔU : via Lemma C.6.
+□
+Lemma C.51 (U − C-Comm). U and C commute.
+Proof. We show that U ∗-commutes with C, and hence by Lemma B.34, U commutes wth C.
+Let ΔU −→U Δ′
+U and ΔC −→C Δ′
+C denote the reducts for U and C respectively. If the reducts are
+disjoint then terms can be trivially joined. Let us split cases on whether ΔU occurs under ΔC or
+vice versa.
+Case ΔU ⊆ ΔC via Lemma C.10.
+Case ΔC ⊆ ΔU via Lemma C.6.
+□
+Lemma C.52. N and A commute.
+56
+2745
+2746
+2747
+2748
+2749
+2750
+2751
+2752
+2753
+2754
+2755
+2756
+2757
+2758
+2759
+2760
+2761
+2762
+2763
+2764
+2765
+2766
+2767
+2768
+2769
+2770
+2771
+2772
+2773
+2774
+2775
+2776
+2777
+2778
+2779
+2780
+2781
+2782
+2783
+2784
+2785
+2786
+2787
+2788
+2789
+2790
+2791
+2792
+2793
+The Verse Calculus: a Core Calculus for Functional Logic Programming
+In submission, March 2023,
+Proof. We show that N strongly commutes with A, hence commutes via Lemma B.19. Let
+ΔA −→A Δ′
+A and ΔN −→N Δ′
+N denote the reducts for A and N respectively. If the reducts are
+disjoint then terms can be trivially joined in a single step. Let us split cases on whether ΔA occurs
+under ΔN or vice versa.
+Case ΔA ⊆ ΔN via Lemma C.8.
+Case ΔN ⊆ ΔA via Lemma C.5.
+□
+Lemma C.53. N and G commute.
+Proof. We show that N strongly commutes with G, hence commutes via Lemma B.19. Let
+ΔG −→G Δ′
+G and ΔN −→N Δ′
+N denote the reducts for G and N respectively. If the reducts are disjoint
+then terms can be trivially joined in a single step. Let us split cases on whether ΔG occurs under
+ΔN or vice versa.
+Case ΔG ⊆ ΔN via Lemma C.8.
+Case ΔN ⊆ ΔG via Lemma C.9.
+□
+Lemma C.54. N and C commute.
+Proof. We show that N strongly commutes with C, hence commutes via Lemma B.19. Let
+ΔC −→C Δ′
+C and ΔN −→N Δ′
+N denote the reducts for C and N respectively. If the reducts are disjoint
+then terms can be trivially joined in a single step. Split cases on whether ΔC occurs under ΔN or
+vice versa.
+Case ΔC ⊆ ΔN via Lemma C.8.
+Case ΔN ⊆ ΔC via Lemma C.10.
+□
+C.8 Application
+Lemma C.55. A is confluent.
+Proof. We show that A satisfies the diamond property and hence, is confluent by Lemma B.10.
+Suppose that 𝑒 −→A 𝑒1 via the redux Δ1 −→A Δ′
+1, and 𝑒 −→A 𝑒2 via the redux Δ2 −→A Δ′
+2. If Δ1 and Δ2
+are disjoint in 𝑒, the terms 𝑒1 and 𝑒2 can be trivially joined in a single step. If Δ1 ⊆ Δ2 (or Δ2 ⊆ Δ1)
+then Lemma C.5 completes the proof. □
+Lemma C.56. A and G commute.
+Proof. We show that A strongly commutes with G, hence commutes via Lemma B.19. Let
+ΔA −→A Δ′
+A and ΔG −→G Δ′
+G denote the reducts for A and G respectively. If the reducts are
+disjoint then terms can be trivially joined in a single step. Let us split cases on whether ΔA occurs
+under ΔN or vice versa.
+Case ΔA ⊆ ΔG via Lemma C.9.
+Case ΔG ⊆ ΔA via Lemma C.5.
+□
+Lemma C.57. A and C commute.
+Proof. We show that A strongly commutes with C, hence commutes via Lemma B.19. Let
+ΔA −→A Δ′
+A and ΔC −→C Δ′
+C denote the reducts for A and C respectively. If the reducts are disjoin
+
+
+3235
+3236
+3237
+3238
+3239
+3240
+3241
+3242
+3243
+3244
+3245
+3246
+3247
+3248
+3249
+3250
+3251
+3252
+3253
+3254
+3255
+3256
+3257
+3258
+3259
+3260
+3261
+3262
+3263
+3264
+3265
+3266
+3267
+3268
+3269
+3270
+3271
+3272
+3273
+3274
+3275
+3276
+3277
+3278
+3279
+3280
+3281
+3282
+3283
+The Verse Calculus: a Core Calculus for Functional Logic Programming
+In submission, March 2023,
+Proof. □
+D.8 Proof that VC Is Skew Confluent
+[This is just a brief proof sketch.]
+First prove that the modified U is skew confluent. (In doing so we will define U←
+⩽𝜔VC
+.)
+Then use existing proofs to demonstrate that A ∪ N ∪ G ∪ C is confluent. Because they are also
+monotonic, they are therefore skew confluent, and (A ∪ N ∪ G ∪ C)←
+⩽𝜔VC
+is trivial.
+Prove that A ∪ N ∪ G ∪ C commutes with U←
+⩽𝜔VC
+.
+Then apply Lemma D.14 to show that U ∪ (A ∪ N ∪ G ∪ C) is skew confluent.
+67
+3284
+3285
+3286
+3287
+3288
+3289
+3290
+3291
+3292
+3293
+3294
+3295
+3296
+3297
+3298
+3299
+3300
+3301
+3302
+3303
+3304
+3305
+3306
+3307
+3308
+3309
+3310
+3311
+3312
+3313
+3314
+3315
+3316
+3317
+3318
+3319
+3320
+3321
+3322
+3323
+3324
+3325
+3326
+3327
+3328
+3329
+3330
+3331
+3332
+In submission, March 2023,
+Augustsson, Breitner, Claessen, Jhala, Peyton Jones, Shivers, Steele, Sweeney
+Domains
+𝑊 = Z + ⟨𝑊 ⟩ + (𝑊 → 𝑊 ∗)
+⟨𝑊 ⟩ = a finite tuple of values 𝑊
+𝐸𝑛𝑣 = 𝐼𝑑𝑒𝑛𝑡 → 𝑊
+Semantics of expressions and values
+EJeK : 𝐸𝑛𝑣 → 𝑊 ∗
+EJvK 𝜌 = unit (VJ𝑣K 𝜌)
+EJfailK 𝜌 = empty
+EJe1 e2K 𝜌 = EJe1K 𝜌 ⋓ EJe2K 𝜌
+EJe1 = e2K 𝜌 = EJe1K 𝜌 ⋒ EJe2K 𝜌
+EJe1; e2K 𝜌 = EJe1K 𝜌 # EJe2K 𝜌
+EJv1 v2K 𝜌 = apply(VJv1K 𝜌, VJv2K 𝜌)
+EJ∃x. eK 𝜌 = Ð𝑤 ∈𝑊 EJ𝑒K (𝜌 [𝑥 ↦ → 𝑤])
+EJone{e}K 𝜌 = one(EJ𝑒K 𝜌)
+EJall{e}K 𝜌 = unit (all(EJ𝑒K 𝜌))
+VJvK : 𝐸𝑛𝑣 → 𝑊
+VJxK 𝜌 = 𝜌 (𝑥)
+VJkK 𝜌 = 𝑘
+VJ𝑜𝑝K 𝜌 = OJ𝑜𝑝K
+VJ𝜆x. eK 𝜌 = 𝜆𝑤 .EJ𝑒K (𝜌 [𝑥 ↦ → 𝑤])
+VJ⟨v1, ···, vn⟩K 𝜌 = ⟨VJ𝑣1K 𝜌, ···, VJ𝑣𝑛 K 𝜌⟩
+OJopK : 𝑊
+OJaddK = 𝜆𝑤 . if (𝑤 = ⟨k1, k2⟩) then unit (𝑘1 + 𝑘2) else WRONG
+OJgtK = 𝜆𝑤 . if (𝑤 = ⟨k1, k2⟩ ∧ 𝑘1 > 𝑘2) then unit (𝑘1) else empty
+OJintK = 𝜆𝑤 . if (𝑤 = 𝑘) then unit (𝑘) else empty
+𝑎𝑝𝑝𝑙𝑦 : (𝑊 × 𝑊 ) → 𝑊 ∗
+𝑎𝑝𝑝𝑙𝑦(𝑘, 𝑤) = WRONG 𝑘 ∈ Z
+𝑎𝑝𝑝𝑙𝑦(⟨𝑣0, ···, 𝑣𝑛 ⟩, 𝑘) = unit (𝑣𝑘 ) 0 ⩽ 𝑘 ⩽ 𝑛
+= empty otherwise
+𝑎𝑝𝑝𝑙𝑦(𝑓 , 𝑤) = 𝑓 (𝑤) 𝑓 ∈ 𝑊 → 𝑊 ∗
+Fig. 19. Expression semantics
+E A DENOTATIONAL SEMANTICS FOR VC
+It is highly desirable to have a denotational semantics for VC. A denotational semantics says
+directly what an expression means rather than how it behaves, and that meaning can be very
+perspicuous. Equipped with a denotational semantics we can, for example, prove that the left hand
+side and right hand side of each rewrite rule have the same denotation; that is, the rewrites are
+meaning-preserving.
+68
+3333
+3334
+3335
+3336
+3337
+3338
+3339
+3340
+3341
+3342
+3343
+3344
+3345
+3346
+3347
+3348
+3349
+3350
+3351
+3352
+3353
+3354
+3355
+3356
+3357
+3358
+3359
+3360
+3361
+3362
+3363
+3364
+3365
+3366
+3367
+3368
+3369
+3370
+3371
+3372
+3373
+3374
+3375
+3376
+3377
+3378
+3379
+3380
+3381
+The Verse Calculus: a Core Calculus for Functional Logic Programming
+In submission, March 2023,
+Domains
+𝑊 ∗ = (WRONG + P (𝑊 ))⊥
+Operations
+Empty empty : 𝑊 ∗
+empty = { }
+Unit unit : 𝑊 → 𝑊 ∗
+unit (𝑤) = {𝑤 }
+Union ⋓ : 𝑊 ∗ → 𝑊 ∗ → 𝑊 ∗
+𝑠1 ⋓ 𝑠2 = 𝑠1 ∪ 𝑠2
+Intersection ⋒ : 𝑊 ∗ → 𝑊 ∗ → 𝑊 ∗
+𝑠1 ⋒ 𝑠2 = 𝑠1 ∩ 𝑠2
+Sequencing # : 𝑊 ∗ → 𝑊 ∗ → 𝑊 ∗
+𝑠1 # 𝑠2 = 𝑠2 if 𝑠1 is non-empty
+= { } otherwise
+One one : 𝑊 ∗ → 𝑊 ∗ The result is either empty or a singleton
+one(𝑠) = ???
+All all : 𝑊 ∗ → ⟨𝑊 ⟩
+all(𝑠) = ???
+All operations over 𝑊 ∗ implicitly propagate ⊥ and WRONG. E.g.
+𝑠1 ⋓ 𝑠2 = ⊥ if 𝑠1 = ⊥ or 𝑠2 = ⊥
+= WRONG if (𝑠1 = WRONG and 𝑠2 ≠ ⊥) or (𝑠2 = WRONG and 𝑠1 ≠ ⊥)
+= 𝑠1 ∪ 𝑠2 otherwise
+Fig. 20. Set semantics for 𝑊 ∗
+But a denotational semantics for a functional logic language is tricky. Typically one writes a
+denotation function something like
+EJeK : 𝐸𝑛𝑣 → 𝑊
+where 𝐸𝑛𝑣 = 𝐼𝑑𝑒𝑛𝑡 → 𝑊 . So E takes an expession e and an environment 𝜌 : 𝐸𝑛𝑣 and returns the
+value, or denotation, of the expresssion. The environment binds each free variable of e to its value.
+But what is the semantics of ∃x. e? We need to extend 𝜌 with a binding for x, but what is x bound
+to? In a functional logic language x is given its value by various equalities scattered throughout e.
+This section sketches our approach to this challenge. It is not finished work, and does not count
+as a contribution of our paper. We offer it because we have found it an illuminating alternative way
+to understand VC, one that complements the rewrite rules that are the substance of the paper.
+E.1 A first attempt at a denotational semantics
+Our denotational semantics for VC is given in Fig. 19.
+• We have one semantic function (here E and V) for each syntactic non terminal (here 𝑒 and 𝑣
+respectively.)
+• Each function has one equation for each form of the construct.
+69
+3382
+3383
+3384
+3385
+3386
+3387
+3388
+3389
+3390
+3391
+3392
+3393
+3394
+3395
+3396
+3397
+3398
+3399
+3400
+3401
+3402
+3403
+3404
+3405
+3406
+3407
+3408
+3409
+3410
+3411
+3412
+3413
+3414
+3415
+3416
+3417
+3418
+3419
+3420
+3421
+3422
+3423
+3424
+3425
+3426
+3427
+3428
+3429
+3430
+In submission, March 2023,
+Augustsson, Breitner, Claessen, Jhala, Peyton Jones, Shivers, Steele, Sweeney
+• Both functions take an environment 𝜌 that maps in-scope identifiers to a single value; see
+the definition 𝐸𝑛𝑣 = 𝐼𝑑𝑒𝑛𝑡 → 𝑊 .
+• The value function V returns a single value 𝑊 , while the expression function E returns a
+collection of values 𝑊 ∗ (Appendix E.1).
+The semantics is parameterised over the meaning of a “collection of values 𝑊 ∗”. To a first
+approximation, think of 𝑊 ∗ a (possibly infinite) set of values 𝑊 , with union, intersection etc having
+their ordinary meaning.
+Our first interpretation, given in Figure 20, is a little more refined: 𝑊 ∗ includes ⊥ and WRONG as
+well as a set of values. Our second interpretation is given in Figure 21, and discussed in Appendix E.4.
+The equations themselves, in Fig. 19 are beautifully simple and compositional, as a denotational
+semantics should be.
+The equations for V are mostly self-explanatory, but an equation like VJkK 𝜌 = 𝑘 needs some
+explanation: the 𝑘 on the left hand side (e.g. “3”) is a piece of syntax, but the 𝑘 on the right is
+the corresponding element of the semantic world of values 𝑊 (e.g. 3). As is conventional, albeit
+a bit confusing, we use the same 𝑘 for both. Same for 𝑜𝑝, where the semantic equivalent is the
+corresponding mathematical function.
+The equations for E are more interesting.
+• Values EJvK 𝜌: compute the single value for v, and return a singleton sequence of results.
+The auxiliary function unit is defined at the bottom of Fig. 19.
+• In particular, values include lambdas. The semantics says that a lambda evaluates to a singleton
+collection, whose only element is a function value. But that function value has type 𝑊 → 𝑊 ∗;
+that is, it is a function that takes a single value and returns a collection of values.
+• Function application EJv1 v2K 𝜌 is easy, because V returns a single value: just apply the
+meaning of the function to the meaning of the argument. The apply function is defined in
+Figure 19.
+• Choice EJe1 e2K 𝜌: take the union (written ⋓) of the values returned by e1 and e2 respectively.
+For bags this union operator is just bag union (Figure 20).
+• Unification EJe1 e2K 𝜌: take the intersection of the values returned by e1 and e2 respectively.
+For bags, this “intersection” operator ⋒ is defined in Fig. 20. In this definition, the equality is
+mathematical equality of functions; which we can’t implement for functions; see Appendix E.1.
+• Sequencing EJe1; e2K 𝜌. Again we use an auxiliary function # to combine the meanings of
+e1 and e2. For bags, the function # (Fig. 20 again) uses a bag comprehension. Again it does a
+cartesian product, but without the equality constraint of ⋒.
+• The semantics of (one{e}) simply applies the semantic function one : 𝑊 ∗ → 𝑊 ∗ to the
+collection of values returned by e. If e returns no values, so does (one{e}); but if e returns one
+or more values, (one{e}) returns the first. Of course that begs the question of what “the first”
+means – for bags it would be non-deterministic. We will fix this problem in Appendix E.4,
+but for now we simply ignore it.
+• The semantics of (all{e}) is similar, but it always returns a singleton collection (hence the
+unit in the semantics of all) whose element is a (possibly-empty) tuple that contains all the
+values in the collection returned by e.
+The fact that unification “=” maps onto intersection, and choice “ ” onto union, is very satisfying.
+The big excitement is the treatment of ∃. We must extend 𝜌, but what should we bind x to?
+(Compare the equation for VJ𝜆x. eK , where we have a value 𝑤 to hand.) Our answer is simple: try
+all possible values, and union the results:
+EJ∃x. eK 𝜌 =
+Ø
+𝑤 ∈𝑊
+EJ𝑒K (𝜌 [𝑥 ↦ → 𝑤])
+70
+3431
+3432
+3433
+3434
+3435
+3436
+3437
+3438
+3439
+3440
+3441
+3442
+3443
+3444
+3445
+3446
+3447
+3448
+3449
+3450
+3451
+3452
+3453
+3454
+3455
+3456
+3457
+3458
+3459
+3460
+3461
+3462
+3463
+3464
+3465
+3466
+3467
+3468
+3469
+3470
+3471
+3472
+3473
+3474
+3475
+3476
+3477
+3478
+3479
+The Verse Calculus: a Core Calculus for Functional Logic Programming
+In submission, March 2023,
+That Ð𝑤 ∈𝑊 means: enumerate all values in 𝑤 ∈ 𝑊 , in some arbitrary order, and for each: bind 𝑥 to
+𝑤, find the semantics of 𝑒 for that value of 𝑥, namely EJ𝑒K (𝜌 [𝑥 ↦ → 𝑤]), and take the union (in the
+sense of ⋓) of the results.
+Of course we can’t possibly implement it like this, but it makes a great specification. For example
+∃x. x = 3 tries all possible values for x, but only one of them succeeds, namely 3, so the semantics
+is a singleton sequence [3].
+E.2 The denotational semantics is un-implementable
+This semantics is nice and simple, but we definitely can’t implement it! Consider
+∃x. (x2 − x − 6) = 0; x
+The semantics will iterate over all possible values for x, returning all those that satisfy the equality;
+including 3, for example. But unless our implementation can guarantee to solve quadratic equations,
+we can’t expect it to return 3. Instead it’ll get stuck.
+Another way in which the implementation might get stuck is through unifying functions:
+(𝜆x. x + x) = (𝜆y. y ∗ 2) or even (𝜆x. x + 1) = (𝜆y. y + 1)
+But not all unification-over-functions is ruled out. We do expect the implementation to succeed
+with
+∃f . ((𝜆x. x + 1) = f ); f 3
+Here the ∃ will “iterate” over all values of f , and the equality will pick out the (unique) iteration in
+which f is bound to the incrementing function.
+So our touchstone must be:
+• If the implementation returns a value at all, it must be the value given by the semantics.
+• Ideally, the verifier will guarantee that the implementation does not get stuck, or go WRONG.
+E.3 Getting WRONG right
+Getting WRONG right is a bit tricky.
+• What is the value of (3 = ⟨⟩)? The intersection semantics would say empty, the empty
+collection of results, but we might want to say WRONG.
+• Should WRONG be an element of 𝑊 or of 𝑊 ∗? We probably want (one{3 wrong} to return
+a unit (3) rather then WRONG?
+• What about fst (⟨3, wrong⟩)? Is that wrong or 3?
+There is probably more than one possible choice here.
+E.4 An order-sensitive denotational semantics
+There is a Big Problem with this approach. Consider ∃x. x = (4 3). The existential enumerates
+all possible values of x in some arbitrary order, and takes the union (i.e., “concatentation”) of the
+results from each of these bindings. Suppose that ∃ enumerates 3 before 4; then the semantics of
+this expression is the sequence [3, 4], and not [4, 3] as it should be. And yet returning a sequence
+(not a set nor a bag) is a key design choice in Verse. What can we do?
+Figure 21 give a new denotational semantics that does account for order. The key idea (due to
+Joachim Breitner) is this: return a sequence of labelled values; and then sort that sequence (in one
+and all) into canonical order before exposing it to the programmer.
+We do not change the equations for E, V, and O at all; they remain precisely as they are in
+Figure 19. However the semantics of a collection of values, 𝑊 ∗, does change, and is given in
+Figure 21:
+71
+3480
+3481
+3482
+3483
+3484
+3485
+3486
+3487
+3488
+3489
+3490
+3491
+3492
+3493
+3494
+3495
+3496
+3497
+3498
+3499
+3500
+3501
+3502
+3503
+3504
+3505
+3506
+3507
+3508
+3509
+3510
+3511
+3512
+3513
+3514
+3515
+3516
+3517
+3518
+3519
+3520
+3521
+3522
+3523
+3524
+3525
+3526
+3527
+3528
+In submission, March 2023,
+Augustsson, Breitner, Claessen, Jhala, Peyton Jones, Shivers, Steele, Sweeney
+Domains
+𝑊 ∗ = (WRONG + P (𝐿𝑊 ))⊥
+𝑊 ? = {𝑊 } Set with 0 or 1 elements
+𝐿𝑊 = [𝐿] × 𝑊 Sequence of 𝐿 and a value
+𝐿 = L + R
+Operations
+Empty empty : 𝑊 ∗
+empty = ∅
+Singleton unit : 𝑊 → 𝑊 ∗
+unit (𝑤) = {([], 𝑤)}
+Union ⋓ : 𝑊 ∗ → 𝑊 ∗ → 𝑊 ∗
+𝑠1 ⋓ 𝑠2 = {(L : 𝑙, 𝑤) | (𝑙, 𝑤) ∈ 𝑠1 } ∪ {(R : 𝑙, 𝑤) | (𝑙, 𝑤) ∈ 𝑠2 }
+Intersection ⋒ : 𝑊 ∗ → 𝑊 ∗ → 𝑊 ∗
+𝑠1 ⋒ 𝑠2 = {(𝑙1 ⊲⊳ 𝑙2, 𝑤1) | (𝑙1, 𝑤1) ∈ 𝑠1, (𝑙2, 𝑤2) ∈ 𝑠2, 𝑤1 = 𝑤2 }
+Sequencing # : 𝑊 ∗ → 𝑊 ∗ → 𝑊 ∗
+𝑠1 # 𝑠2 = {(𝑙1 ⊲⊳ 𝑙2, 𝑤2) | (𝑙1, 𝑤1) ∈ 𝑠1, (𝑙2, 𝑤2) ∈ 𝑠2 }
+One one : 𝑊 ∗ → 𝑊 ∗
+one(𝑠) = head (sort (𝑠))
+All all : 𝑊 ∗ → 𝑊 ∗
+all(𝑠) = tuple(sort (𝑠))
+Head head : ([𝑊 ] + WRONG) → 𝑊 ∗
+head (WRONG) = WRONG
+head [] = 𝑒𝑚𝑝𝑡𝑦
+head (𝑤 : 𝑠) = unit (𝑤)
+To tuple tuple : ([𝑊 ] + WRONG) → ⟨𝑊 ⟩
+tuple(WRONG) = WRONG
+tuple[𝑤1, ···, 𝑤𝑛 ] = ⟨𝑤1, ···, 𝑤𝑛 ⟩
+Sort sort : 𝐿𝑊 ∗ → ([𝑊 ] + WRONG)⊥
+sort (𝑠) = [] if 𝑠 is empty
+= WRONG if 𝑤𝑠 has more than one element
+= 𝑤𝑠 otherwise
+⊲⊳ sort{(𝑙, 𝑤) | (L : 𝑙, 𝑤) ∈ 𝑠}
+⊲⊳ sort{(𝑙, 𝑤) | (R : 𝑙, 𝑤) ∈ 𝑠}
+where 𝑤𝑠 = [𝑤 | ([], 𝑤) ∈ 𝑠]
+Fig. 21. Labelled set semantics for 𝑊 ∗
+72
+3529
+3530
+3531
+3532
+3533
+3534
+3535
+3536
+3537
+3538
+3539
+3540
+3541
+3542
+3543
+3544
+3545
+3546
+3547
+3548
+3549
+3550
+3551
+3552
+3553
+3554
+3555
+3556
+3557
+3558
+3559
+3560
+3561
+3562
+3563
+3564
+3565
+3566
+3567
+3568
+3569
+3570
+3571
+3572
+3573
+3574
+3575
+3576
+3577
+The Verse Calculus: a Core Calculus for Functional Logic Programming
+In submission, March 2023,
+• A collection of values 𝑊 ∗ is now ⊥ or WRONG (as before), or a set of labelled values, each of
+type 𝐿𝑊 .
+• A labelled value (of type 𝐿𝑊 ) is just a pair ([𝐿] × 𝑊 ) of a label and a value.
+• A label is a sequence of tags 𝐿, where a tag is just L or R, similar to Section 5.1.
+• The union (or concatentation) operation ⋓, defined in Fig. 21, adds a L tag to the labels of the
+values in the left branch of the choice, and a R tag to those coming from the right. So the
+labels specify where in the tree the value comes from.
+• Sequencing # and ⋒ both concatenate the labels from the values they combine.
+• Finally sort puts everything in the “right” order: first the values with an empty label, then the
+values whose label starts with L (notice the recursive sort of the trimmed-down sequence),
+and then those that start with R. Notice that sort removes all the labels, leaving just a bare
+sequence of values 𝑊 ∗.
+• Note that if sort encounters a set with more than one unlabelled element then this considered
+WRONG. This makes ambiguous expressions, like one{∃x. x}, WRONG.
+Let us look at our troublesome example ∃x. x = (4 3), and assume that ∃ binds x to 3 and then 4.
+The meaning of this expression will be
+EJ∃x. x = (4 3)K 𝜖 = [(R, 3), (L, 4)]
+Now if we take all of that expression we will get a singleton sequence containing ⟨4, 3⟩, because
+all does a sort, stripping off all the tags.
+EJall{∃x. x = (4 3)}K 𝜖 = [([], ⟨4, 3⟩)]
+E.5 Related work
+[Christiansen et al . 2011] gives another approach to a denotational semantics for a functional logic
+language. We are keen to learn of others.
+73
+3578
+3579
+3580
+3581
+3582
+3583
+3584
+3585
+3586
+3587
+3588
+3589
+3590
+3591
+3592
+3593
+3594
+3595
+3596
+3597
+3598
+3599
+3600
+3601
+3602
+3603
+3604
+3605
+3606
+3607
+3608
+3609
+3610
+3611
+3612
+3613
+3614
+3615
+3616
+3617
+3618
+3619
+3620
+3621
+3622
+3623
+3624
+3625
+3626
+In submission, March 2023,
+Augustsson, Breitner, Claessen, Jhala, Peyton Jones, Shivers, Steele, Sweeney
+F UPDATEABLE REFERENCES
+The full Verse language has updatable references (à la ML). There are three new primitive operations,
+alloc, read, and write. The alloc creates a new reference with an initial value, read extracts the
+value from a reference, and write sets the value of a referene.
+Modifying these references is transactional in the sense that if a computation fails, then any
+updates will not be visible outside the construct that handles the failures. E.g.,
+r B alloc(0); (if (write⟨r, 1⟩; fail) then 1 else 2); read(r)
+will have the value 0, because the write is part of an expression that fails, and so its effect is not
+visible.
+To add updateable references we extend the system with syntax and rules from figure 22. The
+store h in {e} indicates that e should be reduced using the heap h. A heap is simply a mapping from
+references to values (one mapping being r ↦ → v). A reference is some opaque type that supports
+equality (unification) and creation of a new reference.
+The interaction of the new primitives with the store can be seen from the axioms. The alloc(v)
+operation creates a new reference and adds a binding with v to the store. The read(r) operation
+retrieves the value for reference r from the store, and write⟨r, v⟩ updates the reference r with v in
+the store. All of these operations use the context S which ensures that there are no store operations
+to the left of the hole, i.e., a store operation in the hole is the next one that should execute.
+The interesting rules involve choice and split because store operations are transactional in the
+sense that when an expressions fails, none of its store operations will happen.
+When reducing split(e){f , g} in an S hole, rule st-split-dup, the store is duplicated. Any store
+operations inside the split will happen in this local copy of the store. Note the two occurrences
+of h in the right hand side of st-split-dup. If the reduction of e results in fail then rule fail-elim
+is used, and the store from the failing computation is simply thrown away. If the reduction of e
+results in a value (with or without more alternatives) then rule st-split is used. This rule replaces
+the outer store with the inner store, since we know the inner computation has succeeded.
+Similarely, the reduction of e1 e2 will duplicate the store into the first branch, st-choice-dup.
+Here e1 must not contain any store operation nor be a value. And again, similarely, st-choice
+commits the new store and throws away the old.
+The use of oe in the rules is to ensure that the rules cannot get stuck in a loop. Using e instead of
+oe would mean that failing or committing would make the expression match the duplication rule
+again. It also prevents the duplication rule from repeatedly duplicating the store.
+Note that store is part of the 𝑋 context, which means that the store can float inside existentials.
+This is necessary for the store rules to fire since the S context does not allow going under existentials.
+The semantics of for(d) do e with respect to store effects is somewhat intricate. The expression
+d is possibly multi-valued; any effects that happens when computing the first value of d will be
+visible the first time e is computed. Both these effects are then visible when computing the second
+value of d, and so on. If any iteration of d fails, then the effects of that computation are not visible
+outside d. This means that the desugaring of for into split needs to be more elaborate.
+for(∃x1···xn. d) do e
+means
+f ⟨⟩ B ⟨⟩;
+g(v)(r) B (v = ⟨x1, ···, xn⟩; cons⟨e, split(r ⟨⟩){f , g}⟩;
+split(∃x1 ··· xn. d; ⟨x1, ···, xn⟩){f , g}
+To support limited store operations (e.g., read, but not write) we can equip the store with a set
+of currently allowed operations. We also need some extra primitives that modify this set.
+74
+3627
+3628
+3629
+3630
+3631
+3632
+3633
+3634
+3635
+3636
+3637
+3638
+3639
+3640
+3641
+3642
+3643
+3644
+3645
+3646
+3647
+3648
+3649
+3650
+3651
+3652
+3653
+3654
+3655
+3656
+3657
+3658
+3659
+3660
+3661
+3662
+3663
+3664
+3665
+3666
+3667
+3668
+3669
+3670
+3671
+3672
+3673
+3674
+3675
+The Verse Calculus: a Core Calculus for Functional Logic Programming
+In submission, March 2023,
+Syntax extension
+References 𝑟
+Expressions 𝑒 ::= · · · | store h in {e}
+Primops 𝑜𝑝 ::= · · · | alloc | read | write
+Head values ℎ𝑛𝑓 ::= · · · | 𝑟
+Execution contexts 𝑋 ::= · · · | store h in {𝑋 }
+Scope contexts 𝑆𝐶 ::= · · · | store h in {SC}
+Heap ℎ ::= 𝜖 | r ↦ → v, h
+Heap context 𝐻 ::= □, h | r ↦ → v, H
+Store contexts 𝑆 ::= □ | v = S | S; e | 𝑠𝑒; S | ∃x. S
+Store-op free exprs 𝑠𝑒 ::= v | 𝑠𝑒1 = 𝑠𝑒2 | 𝑠𝑒1; 𝑠𝑒2 | ∃x. 𝑠𝑒 | sp(v)
+Results 𝑤 ::= v | v e
+Non-store primops 𝑠𝑝 ::= any, except alloc, read, write
+Non-store expression 𝑜𝑒 ::= like e, but not w, store, or fail
+Axiom extensions
+Normalization change
+exi-float 𝑋 [ ∃x. e ] −→ ∃x. 𝑋 [ e ] if 𝑋 ≠ □, 𝑥 ∉ fvs(𝑋 ), use 𝛼
+if there is store in 𝑋 then e ∈ ce
+Reference ops
+ref-alloc store h in {S[ alloc(v) ]} −→ store r ↦ → v, h in {S[ r ]}
+fvs(v)#bvs(S), r fresh
+ref-read store H [ r ↦ → v ] in {S[ read(r) ]} −→ store H [ r ↦ → v ] in {S[ v ]}
+fvs(v)#bvs(S), use 𝛼
+ref-write store H [ r ↦ → v1 ] in {S[ write⟨r, v2⟩ ]} −→ store H [ r ↦ → v2 ] in {S[ ⟨⟩ ]}
+fvs(v2)#bvs(S)
+Store duplication
+st-split-dup store h in {S[ split(oe){f , g} ]} −→ store h in {S[ split(store h in {oe}){f , g} ]}
+fvs(h)#bvs(S), use 𝛼
+st-choice-dup store h in {oe e} −→ store h in {store h in {oe} e}
+Store commit
+st-split store h1 in {S[ split(store h2 in {w}){f , g} ]} −→ store h2 in {S[ split(w){f , g} ]}
+fvs(h2)#bvs(S)
+st-choice store h1 in {S[ (store h2 in {w}) e ]} −→ store h2 in {S[ w e ]}
+fvs(h2)#bvs(S)
+Unification
+Extension with the obvious axioms making equal references unify, and anything else fail.
+Top level
+Start top level reduction of e with store 𝜖 in {e}.
